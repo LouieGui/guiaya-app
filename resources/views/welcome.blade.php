@@ -6,6 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Hello World</p>
+    <h2>User List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($users as $user)
+            <tr>
+                <td>{{$user['name']}}</td>
+                <td>{{$user['gender']}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 </html>
