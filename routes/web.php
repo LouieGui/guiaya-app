@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Route;
 use App\Services\UserService;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['name' => 'guiaya-app']);
 });
+
+Route::get('/users', [UserController::class, 'index']);
+
+Route::resource('products', ProductController::class);
 
 //service Container
 Route::get('/test', function (Request $request) {
@@ -80,11 +84,11 @@ Route::post('/token', function(Request $request) {
     return $request->all();
 });
 
-//Controller -> Middleware
-Route::get('/users', [UserController::class, 'index'])->middleware('user-middleware');
+// //Controller -> Middleware
+// Route::get('/users', [UserController::class, 'index'])->middleware('user-middleware');
 
-//Resources
-Route::resource('products', ProductController::class);
+// //Resources
+// Route::resource('products', ProductController::class);
 
 //View with Data
 Route::get('/product-list', function (ProductService $productService) {
